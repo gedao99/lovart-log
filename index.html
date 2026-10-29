@@ -3,42 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lovart防封控与使用指南</title>
+<title>Lovart 防风控指南</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
 <style>
-/* 全局白底 */
+/* 强制全局纯白背景 */
 html, body, #app { background: #ffffff !important; }
 /* 顶部 Banner */
 .banner-box { width: 100%; height: 200px; border-radius: 12px; overflow: hidden; margin-bottom: 24px; background: #f0f9ff; display: flex; align-items: center; justify-content: center; }
 .banner-box img { width: 100%; height: 100%; object-fit: cover; }
-/* 导航卡片样式（醒目） */
+/* 首页导航卡片（醒目） */
 .nav-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 30px; }
 .nav-card { border: 2px solid #42b983; border-radius: 8px; padding: 20px; text-align: center; text-decoration: none !important; transition: all 0.3s; background: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.05); display: block; }
 .nav-card:hover { background: #42b983; transform: translateY(-3px); box-shadow: 0 6px 12px rgba(66,185,131,0.2); }
 .nav-card:hover h3, .nav-card:hover p { color: #fff !important; }
 .nav-card h3 { margin: 0 0 8px 0; color: #2c3e50; font-size: 18px; }
 .nav-card p { margin: 0; color: #666; font-size: 13px; }
+/* 表格样式优化 */
+table { display: table; width: 100%; border-collapse: collapse; margin: 15px 0; }
+th, td { border: 1px solid #dfe2e5; padding: 10px; }
+th { background-color: #f8f8f8; }
 </style>
 </head>
 <body>
 <div id="app"></div>
 <script>
 window.$docsify = {
-  name: 'Lovart 防封控指南',
+  name: 'Lovart 防风控指南',
   loadSidebar: true,
   loadNavbar: true,
   subMaxLevel: 3, // 自动抓取 ### 标题到侧边栏
   search: {
-    placeholder: '🔍 搜索关键词（如：积分、节点）',
-    noData: '没有找到相关内容',
+    placeholder: '🔍 搜索问题、关键词（如：积分、节点）',
+    noData: '没有找到相关问答',
     depth: 3
   },
   // 每次内容更新，修改一下这个时间戳，防止浏览器缓存旧内容
-  formatUpdated: '{MM}/{DD} {HH}:{mm}' 
+  formatUpdated: '{MM}/{DD} {HH}:{mm}'
 }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
-<!-- Docsify 自带搜索插件 -->
 <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
 </body>
 </html>
