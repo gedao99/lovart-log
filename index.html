@@ -3,61 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lovart日志</title>
-<script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
-<script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
+<title>Lovart问答指南</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
 <style>
-/* 折叠块样式 */
-.collapse {
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  margin:10px 0;
-}
-.collapse-title {
-  padding:8px 12px;
-  background:#f4f4f4;
-  cursor:pointer;
-  font-weight:bold;
-}
-.collapse-content {
-  padding:12px;
-  display:none;
-}
-.collapse.open .collapse-content {
-  display:block;
-}
+/* 顶部Banner图片区 */
+.banner-box{width:100%;height:220px;border-radius:12px;overflow:hidden;margin-bottom:20px}
+.banner-box img{width:100%;height:100%;object-fit:cover}
+/* 搜索框样式 */
+.search-custom{width:100%;padding:12px 16px;font-size:16px;border:1px solid #ddd;border-radius:8px;outline:none;margin-bottom:24px}
+.search-custom:focus{border-color:#42b983}
+/* 横向标签栏 */
+.tab-wrap{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.tab-item{padding:10px 18px;border:1px solid #42b983;border-radius:6px;background:#fff;color:#42b983;cursor:pointer}
+.tab-item.active{background:#42b983;color:#fff}
+.tab-content{display:none}
+.tab-content.active{display:block}
 </style>
 </head>
 <body>
 <div id="app"></div>
 <script>
 window.$docsify = {
-  name: 'Lovart日志',
-  repo: '',
+  name: 'Lovart问答指南',
+  loadSidebar: true,
+  loadNavbar: true,
+  subMaxLevel: 3, // 左侧目录自动抓取h1~h3标题，点击直达
   search: {
-    placeholder: '搜索日志'
+    placeholder: '🔍 搜索问题、关键词',
+    noData: '没有匹配到相关问答',
+    depth: 3
   },
-  markdown: {
-    renderer: {
-      text: function(text) {
-        // 解析折叠标签 ::collapse 标题 / ::end-collapse
-        text = text.replace(/::collapse\s*(.*?)\n([\s\S]*?)::end-collapse/g,
-          `<div class="collapse"><div class="collapse-title">$1</div><div class="collapse-content">$2</div></div>`)
-        return text
-      }
-    }
-  }
+  tabs: {persist:true}
 }
-// 折叠块点击事件
-document.addEventListener('click', function(e){
-  if(e.target.classList.contains('collapse-title')){
-    e.target.parentElement.classList.toggle('open')
-  }
-})
 </script>
+<script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
 </body>
 </html>
