@@ -1,2 +1,2 @@
-- [🏠 首页说明](README.md)
-- [❓ 防封控核心逻辑（视频）](faq_why.md)
+- [首页](README.md)
+- [视频](faq_why.md)
