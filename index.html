@@ -6,38 +6,216 @@
 <title>Lovart问答指南</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
 <style>
-/* 顶部Banner图片区 */
-.banner-box{width:100%;height:220px;border-radius:12px;overflow:hidden;margin-bottom:20px}
-.banner-box img{width:100%;height:100%;object-fit:cover}
-/* 搜索框样式 */
-.search-custom{width:100%;padding:12px 16px;font-size:16px;border:1px solid #ddd;border-radius:8px;outline:none;margin-bottom:24px}
-.search-custom:focus{border-color:#42b983}
-/* 横向标签栏 */
-.tab-wrap{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
-.tab-item{padding:10px 18px;border:1px solid #42b983;border-radius:6px;background:#fff;color:#42b983;cursor:pointer}
-.tab-item.active{background:#42b983;color:#fff}
-.tab-content{display:none}
-.tab-content.active{display:block}
+  /* 顶部白色到底部深蓝色渐变背景 */
+  body {
+    background: linear-gradient(180deg, #ffffff 0%, #e8f1fb 35%, #254b87 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  /* 让主内容区更清晰 */
+  .content {
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 14px;
+    padding: 28px;
+    margin-top: 24px;
+    box-shadow: 0 10px 30px rgba(17, 42, 82, 0.15);
+  }
+
+  /* 顶部Banner图片区 */
+  .banner-box {
+    width: 100%;
+    height: 220px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  .banner-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* 真正可用的搜索框 */
+  .search-box {
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 16px;
+    border: 1px solid #cfd8e3;
+    border-radius: 10px;
+    outline: none;
+    background: #ffffff;
+    color: #1f2937;
+    box-shadow: 0 4px 14px rgba(37, 75, 135, 0.08);
+  }
+
+  .search-input:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.18);
+  }
+
+  .search-result {
+    margin-top: 10px;
+    background: #ffffff;
+    border: 1px solid #e5eaf2;
+    border-radius: 10px;
+    max-height: 320px;
+    overflow-y: auto;
+    display: none;
+    box-shadow: 0 8px 24px rgba(17, 42, 82, 0.12);
+  }
+
+  .search-result.show {
+    display: block;
+  }
+
+  .search-result-item {
+    padding: 12px 16px;
+    border-bottom: 1px solid #f1f4f9;
+    cursor: pointer;
+    color: #254b87;
+  }
+
+  .search-result-item:hover {
+    background: #f4f8ff;
+  }
+
+  .search-empty {
+    padding: 14px 16px;
+    color: #6b7a90;
+  }
+
+  /* 标签栏样式 */
+  .tab-wrap {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .tab-item {
+    padding: 10px 18px;
+    border: 1px solid #4a90e2;
+    border-radius: 6px;
+    background: #fff;
+    color: #254b87;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .tab-item.active {
+    background: #254b87;
+    color: #fff;
+  }
+
+  .tab-content {
+    display: none;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  /* 标题颜色适配蓝色渐变 */
+  h1, h2, h3 {
+    color: #16355f;
+  }
+
+  /* 左侧目录区域背景稍微提亮 */
+  .sidebar {
+    background: rgba(255, 255, 255, 0.88) !important;
+  }
 </style>
 </head>
 <body>
+
 <div id="app"></div>
+
 <script>
-window.$docsify = {
-  name: 'Lovart问答指南',
-  loadSidebar: true,
-  loadNavbar: true,
-  subMaxLevel: 3, // 左侧目录自动抓取h1~h3标题，点击直达
-  search: {
-    placeholder: '🔍 搜索问题、关键词',
-    noData: '没有匹配到相关问答',
-    depth: 3
-  },
-  tabs: {persist:true}
-}
+  window.$docsify = {
+    name: 'Lovart问答指南',
+    loadSidebar: true,
+    subMaxLevel: 3,
+    search: {
+      placeholder: '搜索问题、关键词',
+      noData: '没有匹配到相关问答',
+      depth: 3
+    },
+    tabs: {
+      persist: true
+    }
+  }
 </script>
+
 <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
 <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+
+<script>
+  // 简单全站搜索功能
+  document.addEventListener('DOMContentLoaded', function () {
+    const input = document.querySelector('.search-input');
+    const resultBox = document.querySelector('.search-result');
+
+    if (!input || !resultBox) return;
+
+    const questions = [
+      { title: 'Lovart账号怎么注册？', keyword: '注册,账号注册,手机号注册', url: '#/lovart常见问题?id=lovart-账号注册问题' },
+      { title: '优惠码怎么兑换？', keyword: '优惠码,兑换,激活码,使用优惠码', url: '#/lovart常见问题?id=优惠码兑换教程' },
+      { title: '报错提示怎么办？', keyword: '报错,错误,打不开,失败,异常', url: '#/lovart常见问题?id=报错与解决' },
+      { title: '魔法/梯子怎么配置？', keyword: '魔法,梯子,配置,节点,服务器', url: '#/魔法/梯子使用方法?id=基础配置' },
+      { title: '节点怎么切换？', keyword: '节点,切换,换节点,线路', url: '#/魔法/梯子使用方法?id=节点切换' },
+      { title: '用什么浏览器更好？', keyword: '浏览器,推荐,Chrome,Edge', url: '#/浏览器使用方法?id=浏览器推荐' },
+      { title: '浏览器缓存怎么清除？', keyword: '清除缓存,缓存,历史记录,垃圾', url: '#/浏览器使用方法?id=清除缓存' },
+      { title: 'QQ交流群怎么加入？', keyword: 'QQ群,交流群,群号,加群', url: '#/QQ交流群?id=进群须知' }
+    ];
+
+    input.addEventListener('input', function () {
+      const val = this.value.trim().toLowerCase();
+
+      if (!val) {
+        resultBox.classList.remove('show');
+        resultBox.innerHTML = '';
+        return;
+      }
+
+      const list = questions.filter(item =>
+        item.title.toLowerCase().includes(val) ||
+        item.keyword.toLowerCase().includes(val)
+      );
+
+      if (list.length === 0) {
+        resultBox.innerHTML = '<div class="search-empty">没有找到相关问题，请换个关键词试试</div>';
+      } else {
+        resultBox.innerHTML = list.map(item =>
+          `<div class="search-result-item" data-url="${item.url}">${item.title}</div>`
+        ).join('');
+      }
+
+      resultBox.classList.add('show');
+
+      resultBox.querySelectorAll('.search-result-item').forEach(el => {
+        el.addEventListener('click', function () {
+          location.href = this.dataset.url;
+          resultBox.classList.remove('show');
+          input.value = '';
+        });
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.search-box')) {
+        resultBox.classList.remove('show');
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
