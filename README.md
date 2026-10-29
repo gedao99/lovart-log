@@ -3,8 +3,10 @@
 > 拒绝长篇大论，直接看视频实操演示！本页面后续会持续更新图文补充。
 
 <div class="video-container">
-  <!-- 这里直接用最纯粹的 iframe，去掉复杂的 style -->
+
+  <!-- 【重要】下面这行的 src 里的 BV 号，替换成你自己的 B 站视频 BV 号 -->
   <iframe src="//player.bilibili.com/player.html?bvid=BV1xx411c7mD&page=1&high_quality=1&danmaku=0" allowfullscreen="true"></iframe>
+
 </div>
 
 ---
