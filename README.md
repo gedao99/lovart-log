@@ -1,14 +1,12 @@
-<div class="alert-box">
+<div class="alert-box" style="margin-top: 10px;">
   <p><strong>💡 网页说明：</strong>本网页旨在收集和整理用户在使用过程中遇到的各种问题并作出相应解答。</p>
   <p><strong>🛡️ 关于防风控：</strong>Lovart 作为 AI 设计平台，其风控系统主要针对“非人类批量操作”和“多账号滥用新用户福利”两类行为。本指南旨在帮助正常用户避免被误判，所有操作请控制在使用频率合理的范围内。</p>
 </div>
 
-# 🎬 核心机制与解决方案（视频讲解）
-
-> 🎥 接下来的所有防封控、防误判的核心逻辑，都将采用 **视频 + 图文** 的形式为大家详细拆解。
+> 🎥 **接下来的所有防封控、防误判的核心逻辑，都将采用「视频 + 图文」的形式为大家详细拆解，请大家直接观看视频。**
 
 <div class="video-container">
-  <!-- 【重要】下面这行的 src 里的 BV 号，替换成你自己的 B 站视频 BV 号 -->
+  <!-- 【重要】把下面 src 里的 BV 号，换成你真实的 B 站视频 BV 号，黑块就会变成视频 -->
   <iframe src="//player.bilibili.com/player.html?bvid=BV1xx411c7mD&page=1&high_quality=1&danmaku=0" allowfullscreen="true"></iframe>
 </div>
 
