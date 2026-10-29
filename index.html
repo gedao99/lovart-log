@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lovart日志</title>
+<script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+<style>
+/* 折叠块样式 */
+.collapse {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin:10px 0;
+}
+.collapse-title {
+  padding:8px 12px;
+  background:#f4f4f4;
+  cursor:pointer;
+  font-weight:bold;
+}
+.collapse-content {
+  padding:12px;
+  display:none;
+}
+.collapse.open .collapse-content {
+  display:block;
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+window.$docsify = {
+  name: 'Lovart日志',
+  repo: '',
+  search: {
+    placeholder: '搜索日志'
+  },
+  markdown: {
+    renderer: {
+      text: function(text) {
+        // 解析折叠标签 ::collapse 标题 / ::end-collapse
+        text = text.replace(/::collapse\s*(.*?)\n([\s\S]*?)::end-collapse/g,
+          `<div class="collapse"><div class="collapse-title">$1</div><div class="collapse-content">$2</div></div>`)
+        return text
+      }
+    }
+  }
+}
+// 折叠块点击事件
+document.addEventListener('click', function(e){
+  if(e.target.classList.contains('collapse-title')){
+    e.target.parentElement.classList.toggle('open')
+  }
+})
+</script>
+</body>
+</html>
