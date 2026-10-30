@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lovart防封控指南</title>
+<title>Lovart防封控指南V2</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
@@ -27,12 +27,13 @@
 
 <script>
 window.$docsify = {
-  name: 'Lovart防封控指南',
-  loadSidebar: true,      // 开启左侧目录树
+  name: 'Lovart防封控指南V2',
+  loadSidebar: true,      // 开启左侧目录树，加载 _sidebar.md
+  loadNavbar: true,       // 【修正】开启顶部导航栏，加载 _navbar.md
   subMaxLevel: 2,         // 自动展开标题层级
   auto2top: true,         // 切换页面自动回顶部
-  navbar: true,           // 开启顶部导航栏（搜索框依赖这个）
   search: {
+    paths: 'auto',        // 【新增】自动索引全部md文档，搜索必须加
     placeholder: '🔍 搜索问题...',
     noData: '没有找到',
     depth: 3
