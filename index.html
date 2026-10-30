@@ -16,13 +16,22 @@
   .hero-box b { color: #0f172a; font-weight: 600; }
   .video-container { max-width: 100%; margin: 20px 0; }
   .video-container iframe { width: 100%; height: 500px; border: none; border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
-  /* 修复搜索框占位文字 */
   .search-input::placeholder {
     color: #999 !important;
   }
   .search-input {
     border-radius: 6px !important;
     padding: 4px 8px;
+  }
+  /* 强制侧边栏默认打开，隐藏收起按钮，固定左侧 */
+  .sidebar {
+    transform: translateX(0) !important;
+  }
+  .sidebar-toggle {
+    display: none !important;
+  }
+  .content {
+    margin-left: 300px !important;
   }
 </style>
 </head>
@@ -32,16 +41,19 @@
 <script>
 window.$docsify = {
   name: 'Lovart防封控指南',
-  loadSidebar: true,
   loadNavbar: true,
-  subMaxLevel: 2,
   auto2top: true,
-  // 【关键修复！Github Pages 必加】所有子路径的_sidebar.md都指向根目录的
-  alias: {
-    '/.*/_sidebar.md': '/_sidebar.md',
-    '/.*/_navbar.md': '/_navbar.md'
-  },
   sidebarDisplayLevel: 1,
+  // 内置侧边目录，不再读取 _sidebar.md
+  sidebar: [
+    {
+      title: '导航目录',
+      children: [
+        { title: '首页', path: 'README.md' },
+        { title: '视频', path: 'faq_why.md' }
+      ]
+    }
+  ],
   search: {
     paths: 'auto',
     placeholder: '🔍 输入关键词搜索问题...',
