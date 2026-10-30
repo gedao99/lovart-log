@@ -1,2 +1,0 @@
-- [首页](README.md)
-- [视频](faq_why.md)
