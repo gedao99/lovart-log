@@ -23,15 +23,20 @@
     border-radius: 6px !important;
     padding: 4px 8px;
   }
-  /* 强制侧边栏默认打开，隐藏收起按钮，固定左侧 */
+  /* 侧边栏固定，宽度调小一点 */
   .sidebar {
     transform: translateX(0) !important;
+    width: 260px !important;
   }
   .sidebar-toggle {
     display: none !important;
   }
+  /* 内容区域：左边距跟着侧边栏走，最大宽度限制，居中，不会无限往右跑 */
   .content {
-    margin-left: 300px !important;
+    margin-left: 260px !important;
+    max-width: 900px !important;
+    margin-right: auto !important;
+    padding: 20px 40px !important;
   }
 </style>
 </head>
@@ -44,7 +49,7 @@ window.$docsify = {
   loadNavbar: true,
   auto2top: true,
   sidebarDisplayLevel: 1,
-  // 内置侧边目录，不再读取 _sidebar.md
+  // 内置侧边目录
   sidebar: [
     {
       title: '导航目录',
